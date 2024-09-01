@@ -1,5 +1,73 @@
 @charset "utf-8";
 
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table.table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    border: 0;
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
 body {
     font-size: 16px;
 }
@@ -22,10 +90,18 @@ ul {
 /* ヘッダー */
 header {
     position: fixed;
-    top: 10px;
+    top: 0;
     right: 0;
     left: 0;
+    height: 100px;
+    /*← fixedで固定 */
+    box-sizing: border-box;
     background-color: #fff;
+    z-index: 200;
+}
+
+main {
+    padding-top: 150px;
 }
 
 .header-container {
@@ -37,14 +113,15 @@ header {
 
 /*ロゴ画像*/
 header #logo img {
-    width: 200px;
+    width: 100px;
     /*画像幅*/
     float: left;
+    padding-right: 10px;
 }
 
 header #logo div {
     float: left;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 header #logo a {
@@ -59,22 +136,86 @@ header #logo a:hover {
 
 /*メインメニュー
 ---------------------------------------------------------------------------*/
+#wrapper {
+    margin: 0 auto;
+    padding: 0 1%;
+    width: 98%;
+    background: #fff;
+    /*←相対位置*/
+    padding-bottom: 120px;
+    /*←footerの高さ*/
+    box-sizing: border-box;
+    /*←全て含めてmin-height:100vhに*/
+}
+
+.cp_breadcrumb {
+    padding-top: 10px;
+}
+
+.cp_breadcrumb .breadcrumbs {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+}
+
+.cp_breadcrumb li {
+    display: inline-block;
+    position: relative;
+    padding-right: calc(16px + 8px);
+    margin-right: 8px;
+    color: #9d9d9d;
+}
+
+.cp_breadcrumb li:not(:last-of-type)::after {
+    content: '›';
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-align: center;
+    font-size: 1.3em;
+    color: inherit;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.s2 {
+    position: relative;
+    font-family: 'Pacifico', cursive;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0 auto 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    display: block;
+    align-items: center;
+    background: #FF7E00;
+    overflow: hidden;
+    margin-top: 10px;
+}
 
 /*フッター設定
 ---------------------------------------------------------------------------*/
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
-    min-height: 200px;
+    min-height: 100px;
     clear: both;
     overflow: hidden;
     background: linear-gradient(#eb9a1b, #e95d22);
     border-radius: 10px 10px 0px 0px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin: 40px auto 0px;
-    padding: 2% 3% 2% 3%;
+    margin: 0px auto;
+    padding: 15px 0;
     color: white;
 }
 
@@ -82,7 +223,7 @@ footer {
     display: flex;
     align-items: flex-start;
     color: #000;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .footer-container h3 {
@@ -101,8 +242,8 @@ footer a {
 
 .copyright {
     text-align: center;
-    padding-top: 40px;
-    font-size: 14px;
+    padding-top: 30px;
+    font-size: 10px;
 }
 
 footer .pr {
@@ -123,18 +264,17 @@ footer hr {
     display: block;
 }
 
-@media screen and (min-width: 960px) {
-
-    header,
-    .footer-container {
-        width: 960px;
-        padding: 0;
-        margin: 0 auto;
-    }
-
-    @media screen and (min-width: 1025px) {
-        a#menu {
-            display: none;
-        }
-    }
+a#menu {
+    display: none;
 }
+
+header,
+.footer-container,
+#wrapper,
+.inner {
+    width: 960px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {}
