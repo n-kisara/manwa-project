@@ -35,6 +35,21 @@ $(window).on("load resize", debounce(function () {
 
 //ハンバーガーメニューをクリックした際の処理
 $(function () {
+	//小さな端末用
+	$('#spMenu').click(function () {
+		$(this).toggleClass('open');
+
+		if ($(this).hasClass('open')) {
+			$('body').removeClass('p').addClass('s');
+			$('#menubar').removeClass('d-b').addClass('d-n');
+			$('#menubar_hdr').addClass('d-b').removeClass('d-n');
+		} else {
+			$('body').addClass('p').removeClass('s');
+			$('#menubar').addClass('d-b').removeClass('d-n');
+			$('#menubar_hdr').removeClass('d-b').addClass('d-n');
+		}
+	});
+	//大きな端末用
 	$('#menubar_hdr').click(function () {
 		$(this).toggleClass('ham');
 
