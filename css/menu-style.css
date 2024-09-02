@@ -1,8 +1,5 @@
 /*メニューブロック*/
 #menubar {
-	/*左の線の幅、線種、色*/
-	font-size: 20px;
-	/*文字サイズ*/
 	font-family: 'Anton';
 	/*上部で読み込んだGoogle Fontsの指定*/
 }
@@ -23,6 +20,7 @@
 	/*上下、左右への余白*/
 	color: #000;
 	/*文字色*/
+	font-size: 14px;
 }
 
 #menubar li a:hover {
@@ -43,18 +41,17 @@
 }
 
 .menuList .menuList>li {
-	font-size: 14px;
 	padding-top: 30px;
-}
-
-.ddmenu_parent>ul {
-	font-size: 12px;
 }
 
 .detail_menu {
 	position: absolute;
 	top: 42px;
 	left: -1px;
+}
+
+.detail_menu {
+	display: block;
 }
 
 .detail_menu li {
@@ -108,14 +105,6 @@
 	/*文字サイズ。端末サイズで文字サイズが変わると不具合が出る場合があるので、ここで統一しています。*/
 }
 
-@media screen and (max-width:800px) {
-
-	/*PC用メニューを非表示にする*/
-	.s #menubar.d-b {
-		display: none;
-	}
-}
-
 /*ドロップダウンブロック設定
 ---------------------------------------------------------------------------*/
 /*ドロップダウンメニューのリンクタグ*/
@@ -131,6 +120,7 @@
 	/*flexボックスを使う指定*/
 	justify-content: space-between;
 	/*並びかたの種類の指定*/
+	position: absolute;
 }
 
 /*メニュー１個あたりの設定*/
@@ -157,6 +147,7 @@
 	/*背景色*/
 	color: #000;
 	/*文字色*/
+	font-size: 14px;
 }
 
 /*現在表示中メニュー（current）*/
@@ -165,7 +156,7 @@
 	background: none;
 	/*背景色*/
 	background-color: #c20111;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 /*現在表示中メニューの下部にある「▼」*/
@@ -210,38 +201,59 @@
 	/*文字色*/
 }
 
-/*バー１本あたりの設定*/
-#menubar_hdr span {
-	display: block;
-	transition: 0.3s;
-	/*アニメーションにかける時間。0.3秒。*/
-	border-top: 2px solid #fff;
-	/*線の幅、線種、色*/
-}
-
-/*×印が出ている状態の設定。※１本目および２本目のバーの共通設定。*/
-#menubar_hdr.ham span:nth-of-type(1),
-#menubar_hdr.ham span:nth-of-type(3) {
-	transform-origin: center center;
-	/*変形の起点。センターに。*/
-	width: 20px;
-	/*バーの幅*/
-}
-
-/*×印が出ている状態の設定。※１本目のバー。*/
-#menubar_hdr.ham span:nth-of-type(1) {
-	transform: rotate(45deg) translate(3.8px, 5px);
-	/*回転45°と、X軸Y軸への移動距離の指定*/
-}
-
-/*×印が出ている状態の設定。※３本目のバー。*/
-#menubar_hdr.ham span:nth-of-type(3) {
-	transform: rotate(-45deg) translate(3.8px, -5px);
-	/*回転-45°と、X軸Y軸への移動距離の指定*/
-}
-
-/*×印が出ている状態の設定。※２本目のバー。*/
-#menubar_hdr.ham span:nth-of-type(2) {
+.spMenu {
 	display: none;
-	/*２本目は使わないので非表示にする*/
+}
+
+@media screen and (max-width:800px) {
+
+	/*PC用メニューを非表示にする*/
+	.s #menubar.d-b {
+		display: none;
+	}
+
+	/* SP用 */
+	.spMenu {
+		display: block;
+	}
+
+	.p #menubar>nav>ul {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.p {
+		position: fixed;
+		right: 0;
+		left: 0;
+		top: 100px;
+		background-color: #fff;
+	}
+
+	#menubar li a {
+		border-right: none;
+		border-bottom: 1px solid #eee;
+	}
+
+	.menuBox {
+		width: 80%;
+		margin: 10px 40px;
+		padding-left: 20px;
+		background-color: #fff;
+		display: block;
+		height: 37px;
+		line-height: 37px;
+		font-weight: bold;
+		text-align: left;
+		border: 1px solid #999;
+	}
+
+	.spMenu span {
+		font-size: 12px;
+	}
+
+	.spMenu span:before {
+		content: "→ ";
+	}
 }
