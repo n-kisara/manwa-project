@@ -72,6 +72,15 @@ body {
     font-size: 16px;
 }
 
+header,
+.footer-container,
+#wrapper,
+.inner {
+    width: 960px;
+    padding: 0;
+    margin: 0 auto;
+}
+
 a {
     color: #000;
     text-decoration: none;
@@ -83,9 +92,6 @@ ul {
     padding: 0;
 }
 
-.row {
-    display: flex;
-}
 
 /* ヘッダー */
 header {
@@ -93,7 +99,7 @@ header {
     top: 0;
     right: 0;
     left: 0;
-    height: 100px;
+    height: 120px;
     /*← fixedで固定 */
     box-sizing: border-box;
     background-color: #fff;
@@ -137,15 +143,14 @@ header #logo a:hover {
 /*メインメニュー
 ---------------------------------------------------------------------------*/
 #wrapper {
-    margin: 0 auto;
     padding: 0 1%;
-    width: 98%;
     background: #fff;
     /*←相対位置*/
     padding-bottom: 120px;
     /*←footerの高さ*/
     box-sizing: border-box;
     /*←全て含めてmin-height:100vhに*/
+    position: relative;
 }
 
 .cp_breadcrumb {
@@ -221,9 +226,17 @@ footer {
 
 .footer-container {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     color: #000;
     font-size: 14px;
+    padding: 0 2%;
+}
+
+.footer_info,
+.footer_left,
+.footer_right {
+    display: flex;
 }
 
 .footer-container h3 {
@@ -244,6 +257,11 @@ footer a {
     text-align: center;
     padding-top: 30px;
     font-size: 10px;
+    color: #000;
+}
+
+.copyright a {
+    color: #000;
 }
 
 footer .pr {
@@ -260,21 +278,44 @@ footer hr {
     padding-right: 20px;
 }
 
-.footer-container {
-    display: block;
-}
-
 a#menu {
     display: none;
 }
 
-header,
-.footer-container,
-#wrapper,
-.inner {
-    width: 960px;
-    padding: 0;
-    margin: 0 auto;
-}
+@media screen and (max-width: 800px) {
 
-@media screen and (max-width: 800px) {}
+    header,
+    .footer-container,
+    #wrapper,
+    .inner {
+        width: 100%;
+    }
+
+    /*メインメニュー*/
+    main {
+        padding-top: 60px;
+    }
+
+    /*フッター設定*/
+
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2% 3%;
+    }
+
+    .footer_info {
+        flex-direction: column;
+        padding-top: 10px;
+        font-size: 12px;
+    }
+
+    .footer_right {
+        padding-top: 5px;
+    }
+
+    .copyright {
+        padding-top: 5px;
+    }
+}
